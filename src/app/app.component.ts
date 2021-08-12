@@ -19,15 +19,47 @@ export class AppComponent {
   candidatesFilter: Candidate[] = [];
   //let temp: Criminal[] = [];
   username: string = '';
-  clickme() {
+
+  onClickSubmit(data) {
+    let male = false;
+    let female = false;
+    let condition = true;
+    if (data.male && data.female) {
+      condition = false;
+    } else if (!data.male && !data.female) {
+      condition = false;
+    } else {
+      if (data.male) {
+        male = true;
+      } else {
+        female = true;
+      }
+    }
+
     this.candidatesFilter = [];
     this.candidates = candidateData;
-    console.log('it does nothing', this.username);
-    this.candidates.forEach(childObj => {
-      if (childObj.first_name == this.username) {
-        this.candidatesFilter.push(childObj);
-      }
-    });
-    this.candidates = this.candidatesFilter;
+    if (data.username != '') {
+      this.candidates.forEach(childObj => {
+        if (childObj.first_name == data.username && condition == false) {
+          this.candidatesFilter.push(childObj);
+        } else if (male == true) {
+          if (
+            childObj.first_name == data.username &&
+            childObj.gender == 'Male'
+          ) {
+            this.candidatesFilter.push(childObj);
+          }
+        } else if (male == false) {
+          if (
+            childObj.first_name == data.username &&
+            childObj.gender == 'Female'
+          ) {
+            this.candidatesFilter.push(childObj);
+          }
+        }
+      });
+
+      this.candidates = this.candidatesFilter;
+    }
   }
 }

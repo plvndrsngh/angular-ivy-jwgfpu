@@ -1,7 +1,18 @@
-<p><input type="text" id="username" name="username" [(ngModel)]="username"></p>
-<h1> {{username}}</h1>
+<form #userlogin="ngForm" (ngSubmit)="onClickSubmit(userlogin.value)">
+  <label for="html">First Name</label>
 
-<button type="button" (click)="clickme()">Clickme</button>
+  <input type = "text" name = "username" placeholder = "" ngModel>
+  <br/>
+  <label for="html">Male</label>
+  <input type="checkbox" name = "male" ngModel  /><br>
+  <label for="html">Female</label>
+  <input type="checkbox" name = "female" ngModel  />
+
+  <br/>
+  <input type = "submit" value = "Search">
+</form>
+
+
 <div class="container">
 
 
