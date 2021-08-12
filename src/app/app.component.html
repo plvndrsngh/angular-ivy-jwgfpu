@@ -1,4 +1,28 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<p><input type="text" id="username" name="username" [(ngModel)]="username"></p>
+<h1> {{username}}</h1>
+
+<button type="button" (click)="clickme()">Clickme</button>
+<div class="container">
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidate of candidates">
+        <td>{{ candidate.id }}</td>
+        <td>{{ candidate.first_name }}</td>
+        <td>{{ candidate.last_name }}</td>
+        <td>{{ candidate.email }}</td>
+        <td>{{ candidate.gender }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
